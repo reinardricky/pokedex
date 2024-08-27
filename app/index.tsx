@@ -2,6 +2,7 @@ import PokemonList from "@/components/organism/PokemonList";
 import { usePokemonList } from "@/hooks/usePokemonList";
 import { useFocusEffect } from "expo-router";
 import { useCallback } from "react";
+import { Text } from "react-native";
 
 const PokemonListPage = () => {
   const { data, isLoading, error, refetch } = usePokemonList();
@@ -13,15 +14,15 @@ const PokemonListPage = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Text>Loading...</Text>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Text>Error: {error.message}</Text>;
   }
 
   if (!data) {
-    return <div>No data available</div>;
+    return <Text>No data available</Text>;
   }
 
   return <PokemonList data={data} />;

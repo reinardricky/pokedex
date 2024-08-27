@@ -2,6 +2,7 @@ import PokemonFavorite from "@/components/organism/PokemonFavorite";
 import { useFavorite } from "@/hooks/useFavorite";
 import { useFocusEffect } from "expo-router";
 import { useCallback } from "react";
+import { Text } from "react-native";
 
 const PokemonFavoritePage = () => {
   const { data, isLoading, error, refetch } = useFavorite();
@@ -13,15 +14,15 @@ const PokemonFavoritePage = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Text>Loading...</Text>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Text>Error: {error.message}</Text>;
   }
 
   if (!data) {
-    return <div>No data available</div>;
+    return <Text>No data available</Text>;
   }
 
   return <PokemonFavorite data={data} />;
