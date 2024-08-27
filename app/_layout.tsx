@@ -7,8 +7,23 @@ export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <Stack>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="[pokemon]" />
+        <Stack.Screen
+          name="index"
+          options={{
+            headerTitle: "Pokedex",
+            headerTitleAlign: "center",
+            headerTitleStyle: {
+              fontSize: 24,
+              fontWeight: "bold",
+            },  
+          }}
+        />
+        <Stack.Screen
+          name="[pokemon]/index"
+          options={{
+            headerTitle: "Pokemon Detail",
+          }}
+        />
       </Stack>
     </QueryClientProvider>
   );

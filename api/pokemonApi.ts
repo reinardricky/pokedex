@@ -11,7 +11,7 @@ export async function getPokemonsApi(endpointUrl?: string) {
   }
 }
 
-export async function getPokemonDetailsByUrlApi(url: string) {
+export async function getPokemonByUrlApi(url: string) {
   try {
     const response = await axios.get(url);
     return response.data;
