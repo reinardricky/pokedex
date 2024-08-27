@@ -1,21 +1,24 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import PokemonList from "@/components/PokemonList";
-import PokemonDetail from "@/components/PokemonDetail";
+import PokemonList from "@/components/organism/PokemonList";
+import { usePokemonList } from "@/hooks/usePokemonList";
 
-const queryClient = new QueryClient();
-const Stack = createStackNavigator();
+const PokemonListPage = () => {
+  const { data, isLoading, error } = usePokemonList();
 
-export default function RootLayout() {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div>No data available</div>;
+  }
+
   return (
-    <NavigationContainer independent>
-      <QueryClientProvider client={queryClient}>
-        <Stack.Navigator initialRouteName="PokemonList">
-          <Stack.Screen name="Pokemon List" component={PokemonList} />
-          <Stack.Screen name="Pokemon Detail" component={PokemonDetail} />
-        </Stack.Navigator>
-      </QueryClientProvider>
-    </NavigationContainer>
+      <PokemonList data={data} />
   );
-}
+};
+
+export default PokemonListPage;

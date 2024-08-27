@@ -1,32 +1,16 @@
-import { usePokemonList } from "@/hooks/usePokemonList";
 import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
-import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
-const PokemonList = () => {
-  const { data, isLoading, error } = usePokemonList();
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!data) {
-    return <div>No data available</div>;
-  }
-
-  const handlePress = (name: string) => {
-    navigation.navigate("Pokemon Detail", { name });
+const PokemonList = ({ data }: { data: PokemonListType }) => {
+  const handlePress = (id: string) => {
+    router.push({ pathname: "/[pokemon]", params: { pokemon: id } });
     console.log(name);
   };
   return (
     <FlatList
       data={data.results}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => handlePress(item.name)}>
+        <TouchableOpacity onPress={() => handlePress(item.url.split("/")[6])}>
           <View>
             <Image
               source={{

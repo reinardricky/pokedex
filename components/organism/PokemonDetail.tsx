@@ -1,23 +1,7 @@
-import { usePokemon } from "@/hooks/usePokemon";
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-const PokemonDetail = ({ route }: any) => {
-  const { name } = route.params;
-  const { data, isLoading, error } = usePokemon(name);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!data) {
-    return <div>No data available</div>;
-  }
-
+const PokemonDetail = ({ data }: any) => {
   return (
     <View>
       <Image
