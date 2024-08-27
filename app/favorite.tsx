@@ -1,10 +1,10 @@
-import PokemonList from "@/components/organism/PokemonList";
-import { usePokemonList } from "@/hooks/usePokemonList";
+import PokemonFavorite from "@/components/organism/PokemonFavorite";
+import { useFavorite } from "@/hooks/useFavorite";
 import { useFocusEffect } from "expo-router";
 import { useCallback } from "react";
 
-const PokemonListPage = () => {
-  const { data, isLoading, error, refetch } = usePokemonList();
+const PokemonFavoritePage = () => {
+  const { data, isLoading, error, refetch } = useFavorite();
 
   useFocusEffect(
     useCallback(() => {
@@ -24,7 +24,7 @@ const PokemonListPage = () => {
     return <div>No data available</div>;
   }
 
-  return <PokemonList data={data} />;
+  return <PokemonFavorite data={data} />;
 };
 
-export default PokemonListPage;
+export default PokemonFavoritePage;

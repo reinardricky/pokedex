@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export const usePokemonList = () => {
   return useQuery<PokemonListType>({
-    queryKey: ["pokemon"],
+    queryKey: ["pokemon list"],
     queryFn: () => getPokemonsApi(),
   });
 };

@@ -15,7 +15,9 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => handlePress(pokemon.url.split("/")[6])}
+      onPress={() =>
+        handlePress(pokemon.id ? pokemon.id : pokemon.url.split("/")[6])
+      }
     >
       <View style={styles.card}>
         <View style={styles.spacing}>
@@ -23,7 +25,7 @@ const PokemonCard = ({ pokemon }) => {
             <Image
               source={{
                 uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-                  pokemon.url.split("/")[6]
+                  pokemon.id ? pokemon.id : pokemon.url.split("/")[6]
                 }.png`,
               }}
               style={styles.image}
