@@ -22,6 +22,11 @@ export default function RootLayout() {
           name="[pokemon]/index"
           options={{
             headerTitle: "Pokemon Detail",
+            headerTitleAlign: "center",
+            headerTitleStyle: {
+              fontSize: 20,
+              fontWeight: "bold",
+            }, 
           }}
         />
       </Stack>

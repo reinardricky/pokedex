@@ -26,8 +26,6 @@ const PokemonList = ({ data }: { data: PokemonListType }) => {
     if (load) return;
     if (!nextUrl) return;
     setLoad(true);
-    console.log("load more");
-    console.log(nextUrl);
     try {
       const response: PokemonListType = await getPokemonByUrlApi(nextUrl);
       setNextUrl(response.next);
