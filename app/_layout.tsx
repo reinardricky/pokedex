@@ -46,7 +46,7 @@ export default function RootLayout() {
             },
             headerLeft: () => null,
             headerRight: () => (
-              <TouchableOpacity onPress={() => router.push({ pathname: "/" })}>
+              <TouchableOpacity onPress={() => router.back()}>
                 <FontAwesome
                   name="heart"
                   size={24}
